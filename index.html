@@ -18,8 +18,17 @@
             font-family: 'Abril Fatface';
         }
 
-        .about {
+        #about {
             background-color: #f5f5f5;
+        }
+
+        #projects {
+            background-color: #c95f35;
+        }
+
+        #contact {
+            background-color: #f5f5f5;
+            padding: 10%;
         }
 
         body {
@@ -44,17 +53,19 @@
 
     </header>
 
-    <table class="link-tbl">
-        <tr>
-            <td> <a href="#about" class="text-link">About Me</a> </td>
-            <td><a href="#projects" class="text-link">Projects</a> </td>
-            <td> <a href="tinyurl.com/cv-kritgpt" class="text-link">CV</a> </td>
-            <td> <a href="#contact" class="text-link">Contact Me</a> </td>
-        </tr>
-    </table>
+    <nav id="nav_bar">
+        <table class="link-tbl">
+            <tr>
+                <td> <a href="#about" class="text-link">About Me</a> </td>
+                <td><a href="#projects" class="text-link">Projects</a> </td>
+                <td> <a href="https://tinyurl.com/cv-kritgpt" target="_blank" class="text-link">CV</a> </td>
+                <td> <a href="#contact" class="text-link">Contact Me</a> </td>
+            </tr>
+        </table>    
+    </nav>
 
 
-    <div class="about">
+    <div id="about">
         <br>
         <h2>About</h2>
         <p align="justify">
@@ -71,30 +82,29 @@
         <br>
     </div>
 
-    <div class="projects">
+    <div id="projects">
         <br>
-        <h2>Projects</h2>
+        <h2 class="white-heading">Projects</h2>
 
         <table>
             <tr>
                 <td>
-                    <div class="card">
-                        <div class="container">
-                            <div class="col-md-5 col-sm-12"> 
-                                <h3><b>Kritty</b> — A shell written in C</h3>
-                                <p>
-                                  Created a shell for Linux in C working with various syscalls and C libraries to implement features such 
-                                  as foreground and background processes, ls and cd, and signal handling.
-                                </p>
-                            </div>
-            
+                    <div class="col-md-12 col-sm-12"> 
+                        <div class="card">
+                            <div class="container">
+                                    <h3><b>Kritty</b> — A shell written in C</h3>
+                                    <p>
+                                    Created a shell for Linux in C working with various syscalls and C libraries to implement features such 
+                                    as foreground and background processes, ls and cd, and signal handling.
+                                    </p>
+                                </div>
                         </div>
                     </div>            
                 </td>
                 <td>
-                    <div class="card">
-                        <div class="container">
-                            <div class="col-md-6 col-sm-12"> 
+                    <div class="col-md-12 col-sm-12"> 
+                        <div class="card">
+                            <div class="container">
                                 <h3><b>COS — Enhanced  xv6</b></h3>
                                 <p>
                                 Added various functionalities such as system calls, scheduling algorithms and Copy-on-Write to xv6, a pedagogical operating system written in C.
@@ -109,13 +119,15 @@
         <br>
     </div>
 
-
-    <div class="footer">
-        <a href="https://www.github.com/kritgpt" class="img-link">
+    <div id="contact">
+        <a href="https://www.github.com/kritgpt" class="img-link" target="_blank">
             <img src="git.png" alt="Github" height="50px">
         </a>
-        <a href="twitter.com/gptkrit">
-            <img src="twt.png" alt="Twitter" height="50px" </a>
+        <a href="https://twitter.com/gptkrit" class="img-link" target="_blank">
+            <img src="twt.png" alt="Twitter" height="50px"> </a>
+    </div>
+
+    <div class="footer">
     </div>
 
     <script>
@@ -128,6 +140,27 @@
             target.style.transform = 'translate3d(0px, ' + rate + 'px, 0px)';
 
         });
+
+        $(document).ready(function() {
+        //change the integers below to match the height of your upper div, which I called
+        //banner.  Just add a 1 to the last number.  console.log($(window).scrollTop())
+        //to figure out what the scroll position is when exactly you want to fix the nav
+        //bar or div or whatever.  I stuck in the console.log for you.  Just remove when
+        //you know the position.
+        $(window).scroll(function () { 
+
+            console.log($(window).scrollTop());
+
+            if ($(window).scrollTop() > 550) {
+            $('#nav_bar').addClass('navbar-fixed-top');
+            }
+
+            if ($(window).scrollTop() < 551) {
+            $('#nav_bar').removeClass('navbar-fixed-top');
+            }
+        });
+        });
+
     </script>
 
 </body>
